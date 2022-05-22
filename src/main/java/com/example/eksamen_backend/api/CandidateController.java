@@ -8,7 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@CrossOrigin
 @RestController
 @RequestMapping("api/candidates")
 public class CandidateController {
@@ -34,6 +34,10 @@ public class CandidateController {
         candidateService.addCandidate(candidate);
     }
 
+    @PutMapping("/{id}")
+    public CandidateResponse updateCandidate(@PathVariable int id, @RequestBody CandidateRequest candidate) {
+        return candidateService.updateCandidate(id, candidate);
+    }
     @DeleteMapping("/{id}")
     public void deleteCandidate(@PathVariable int id) {
         candidateService.deleteCandidate(id);

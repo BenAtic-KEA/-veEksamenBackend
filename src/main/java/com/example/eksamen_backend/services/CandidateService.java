@@ -42,4 +42,13 @@ public class CandidateService {
     public void deleteCandidate(int id) {
         candidateRepository.deleteById(id);
     }
+
+    public CandidateResponse updateCandidate(int id, CandidateRequest candidate) {
+        Candidate c = candidateRepository.findById(id).orElseThrow(()-> new RuntimeException());
+        c.setName(candidate.getName());
+        Party p = partyRepository.findById(candidate.getPartyId()).orElseThrow(()-> new RuntimeException());
+        c.setParty(p);
+        c = candidateRepository.save(c);
+        return new CandidateResponse(c);
+    }
 }
