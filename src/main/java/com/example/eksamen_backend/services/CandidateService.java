@@ -35,8 +35,8 @@ public class CandidateService {
     public void addCandidate(CandidateRequest candidate) {
     Candidate c = new Candidate(candidate.getName());
     Party p = partyRepository.findById(candidate.getPartyId()).orElseThrow(()-> new RuntimeException());
-    p.addCandidate(c);
-        candidateRepository.save(c);
+    c.setParty(p);
+    candidateRepository.save(c);
     }
 
     public void deleteCandidate(int id) {
