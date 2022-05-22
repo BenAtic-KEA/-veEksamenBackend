@@ -10,7 +10,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class CandidateRequest {
 
-   private String name;
+    private String name;
     private int partyId;
 
 }
