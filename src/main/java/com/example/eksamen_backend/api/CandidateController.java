@@ -34,6 +34,9 @@ public class CandidateController {
         candidateService.addCandidate(candidate);
     }
 
-
+    @DeleteMapping("/{id}")
+    public void deleteCandidate(@PathVariable int id) {
+        candidateService.deleteCandidate(id);
+    }
 
 }

@@ -38,4 +38,8 @@ public class CandidateService {
     p.addCandidate(c);
         candidateRepository.save(c);
     }
+
+    public void deleteCandidate(int id) {
+        candidateRepository.deleteById(id);
+    }
 }
