@@ -16,7 +16,6 @@ import java.util.Set;
 @Profile("!test")
 public class MakeTestData implements ApplicationRunner {
 
-
         CandidateRepository candidateRepository;
         PartyRepository partyRepository;
 

@@ -21,7 +21,7 @@ public class Party {
     private String name;
     private String partyletter;
 
-    @OneToMany(mappedBy = "party", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "party", cascade = {CascadeType.PERSIST,CascadeType.MERGE})
     private Set<Candidate> candidates = new HashSet<>();
 
     public Party(String name, String partyletter) {
@@ -34,15 +34,15 @@ public class Party {
         candidate.setParty(this);
     }
 
-    public void removeCandidate(Candidate candidate){
-        this.candidates.remove(candidate);
-        candidate.setParty(null);
-    }
     public void addCandidates(Set<Candidate> candidates){
         this.candidates.addAll(candidates);
         for (Candidate candidate : candidates) {
             candidate.setParty(this);
         }
+    }
+    public void removeCandidate(Candidate candidate){
+        this.candidates.remove(candidate);
+        candidate.setParty(null);
     }
     public void removeCandidates(Set<Candidate> candidates){
         this.candidates.removeAll(candidates);

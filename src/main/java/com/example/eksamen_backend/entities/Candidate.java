@@ -24,5 +24,4 @@ public class Candidate {
         this.name = name;
     }
 
-
 }
