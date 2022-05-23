@@ -4,6 +4,7 @@ import com.example.eksamen_backend.dto.CandidateRequest;
 import com.example.eksamen_backend.dto.CandidateResponse;
 import com.example.eksamen_backend.services.CandidateService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,8 +26,8 @@ public class CandidateController {
     }
 
     @GetMapping()
-    public List<CandidateResponse> getCandidates() {
-        return candidateService.getCandidates();
+    public List<CandidateResponse> getCandidates(@RequestParam(value = "partyLetter",required = false) String partyLetter) {
+        return candidateService.getCandidates(partyLetter);
     }
 
     @PostMapping()

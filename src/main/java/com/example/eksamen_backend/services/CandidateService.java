@@ -27,9 +27,13 @@ public class CandidateService {
     }
 
 
-    public List<CandidateResponse> getCandidates() {
+    public List<CandidateResponse> getCandidates(String letter) {
 
+        if(letter != null) {
+            return candidateRepository.findCandidatesByParty_Partyletter(letter).stream().map(CandidateResponse::new).collect(Collectors.toList());
+        } else {
         return candidateRepository.findAll().stream().map(candidate-> new CandidateResponse(candidate)).collect(Collectors.toList());
+        }
     }
 
     public void addCandidate(CandidateRequest candidate) {
